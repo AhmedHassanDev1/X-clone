@@ -1,0 +1,70 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserEntity {
+  _id: String!
+  name: String!
+  email: String!
+  bio: String
+  location: String
+  image: String
+  profile_image: String
+  count_followers: Float!
+  count_media: Float!
+  count_tweets: Float!
+  count_following: Float!
+  is_follow: Boolean!
+  createdAt: String!
+}
+
+type Media {
+  url: String!
+  public_id: String!
+  type: String!
+  width: Int!
+  height: Int!
+}
+
+type TweetEntity {
+  _id: String!
+  user: UserEntity!
+  original_tweet: TweetEntity
+  title: String
+  is_like: Boolean!
+  is_bookmarks: Boolean!
+  is_repost: Boolean!
+  type: String!
+  count_replaies: Int!
+  count_reposts: Int!
+  count_likes: Int!
+  createdAt: String!
+  media: [Media!]
+}
+
+type NotificationsEntity {
+  user_id: String!
+  tweet_id: String!
+  type: String
+}
+
+type Query {
+  me: UserEntity!
+  user_details(id: String!): UserEntity
+  users(limit: Int, offset: Int): [UserEntity!]
+  get_user_Tweet(id: String!, limit: Int, offset: Int): [TweetEntity!]!
+  get_Tweets(limit: Int, offset: Int): [TweetEntity!]!
+  get_tweet_by_id(tweet_id: String!): TweetEntity
+  get_likes(limit: Int, offset: Int): [TweetEntity!]
+  get_bookmarks(limit: Int, offset: Int): [TweetEntity!]
+  get_media(id: String!, limit: Int, offset: Int): [Media!]
+}
+
+type Mutation {
+  follow(id: String!): ID
+  unfollow(id: String!): ID
+  add_like(tweet_id: String!): NotificationsEntity!
+  remove_like(tweet_id: String!): ID!
+  bookmarks(tweet_id: String!): NotificationsEntity!
+  unbookmarks(tweet_id: String!): NotificationsEntity!
+}

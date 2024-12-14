@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .user-image {
+    @apply flex justify-center items-center absolute left-5 bottom-0 translate-y-1/2 w-1/4 aspect-square ring-2 ring-black overflow-hidden rounded-full bg-zinc-700
+  }
+
+  .profile-image {
+    @apply w-full aspect-[16/6] relative bg-zinc-700
+  }
+
+  .header {
+    @apply bg-[#3434343d] backdrop-blur-lg p-3 sticky top-0 flex gap-2 items-center z-40
+  }
+
+  .form-size {
+    @apply w-[70vw] h-[70vh] max-w-xl max-h-[70%]
+  }
+
+  .error-message {
+    @apply text-sm text-red-600
+  }
+
+  .input-wrapper {
+    @apply w-full relative rounded-lg overflow-hidden
+  }
+
+  .input {
+    @apply w-full pt-6 p-3 border-solid border-2 rounded-lg text-white
+  }
+
+  .label {
+    @apply first-letter:uppercase text-lg absolute top-3 left-3 -translate-y-1/2 duration-100 select-none pointer-events-none text-current;
+  }
+
+  .invalid-input {
+    @apply border-red-600
+  }
+
+  .valid-input {
+    @apply border-zinc-700
+  }
+
+  .icon {
+    @apply text-3xl cursor-pointer
+  }
+
+  .media-container {
+    @apply w-full grid p-2
+  }
+
+}
+
+@layer base {
+
+  button,
+  input,
+  dialog,
+  textArea {
+    @apply outline-none border-none bg-transparent
+  }
+
+  button:disabled {
+    @apply opacity-65
+  }
+
+  .media-container:has(div:nth-child(1)) {
+    @apply relative h-80 grid-cols-1 grid-rows-1
+  }
+
+  .media-container:has(div:nth-child(2)) {
+    @apply relative h-72   grid-cols-2 grid-rows-1
+  }
+
+  .media-container:has(div:nth-child(3))  {
+    @apply relative h-80 grid-cols-2 grid-rows-2
+  }
+  .media-container:has(div:nth-child(3))  div:nth-child(1){
+    @apply row-span-2
+  }
+  .media-container:has(div:nth-child(4))  {
+    @apply relative h-96 grid-cols-2 grid-rows-2
+  }
+  .media-container:has(div:nth-child(4))  div:nth-child(1){
+    @apply row-span-1
+  }
+
+}
+
+
+
+/* animations */
+
+@keyframes pulse2 {
+  0%,50%,100% {
+    transform: scale(1);
+  }
+  25%,80% {
+    transform: scale(1.4); 
+  }
+ 
+}
